@@ -1,0 +1,14 @@
+name: Snyk SCA scan
+on: push
+
+jobs:
+  run-snyk-sca:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Run Snyk SCA Scan
+        uses: snyk/actions/maven@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
